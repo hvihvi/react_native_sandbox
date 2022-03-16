@@ -27,9 +27,18 @@ const AnotherPage = () => <Text>Another Page...</Text>;
 
 const Stack = createNativeStackNavigator();
 
+const linking = {
+  prefixes: ['rnsandbox://'],
+  config: {
+    screens: {
+      AnotherPage: 'anotherscreen',
+    },
+  },
+};
+
 const App = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="AnotherPage" component={AnotherPage} />
