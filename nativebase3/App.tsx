@@ -38,7 +38,7 @@ const colorModeManager = {
 
 // Define the config
 const config = {
-  useSystemColorMode: false,
+  useSystemColorMode: true,
   initialColorMode: 'dark',
 };
 
@@ -56,14 +56,16 @@ export default function App() {
         style={styles.image}
         imageStyle={styles.imageStyle}>
         <SafeAreaView>
-          <Button
-            position="absolute"
-            right="0"
-            top="0"
-            onPress={toggleColorMode}>
-            Toggle color {colorMode}
-          </Button>
-          <List />
+          <Box height="100%" width="100%">
+            <VStack>
+              <HStack justifyContent="flex-end">
+                <Button onPress={toggleColorMode}>
+                  Toggle color {colorMode}
+                </Button>
+              </HStack>
+              <List />
+            </VStack>
+          </Box>
           <StatusBar style="auto" />
         </SafeAreaView>
       </ImageBackground>
