@@ -1,0 +1,6 @@
+module Pods_react_native_sandbox_react_native_sandboxTests {
+  umbrella header "Pods-react_native_sandbox-react_native_sandboxTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
