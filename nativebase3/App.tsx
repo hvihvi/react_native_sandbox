@@ -16,6 +16,7 @@ import {
 import {FC} from 'react';
 import {ImageBackground, StyleSheet} from 'react-native';
 import {CustomIcon} from './CustomIcon';
+import DragList from './DragList';
 
 const colorModeManager = {
   get: async () => {
@@ -51,9 +52,10 @@ export default function App() {
     <NativeBaseProvider colorModeManager={colorModeManager} theme={theme}>
       <BgImage>
         <Box safeArea height="100%" width="100%">
-          <VStack>
+          <VStack space={8}>
             <TopBar />
             <List />
+            <DragList />
           </VStack>
         </Box>
       </BgImage>
@@ -124,9 +126,8 @@ const List = () => (
       </Button>
       <HStack space="2">
         <CustomIcon />
-        <Box>I'm a box!</Box>
+        <Box>I'm a box!!!</Box>
       </HStack>
-      <Box>I'm a box!</Box>
       <Box>I'm a box!</Box>
     </VStack>
   </Center>
