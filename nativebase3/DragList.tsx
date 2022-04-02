@@ -1,4 +1,4 @@
-import {Box, Card, Center, HStack} from 'native-base';
+import {Box, Card, Center, CheckIcon, HStack} from 'native-base';
 import React, {useState} from 'react';
 import {
   Text,
@@ -64,13 +64,13 @@ const Item = ({item, drag, isActive}: RenderItemParams<Item>) => {
         <Card bgColor={'blueGray.900'} flexGrow="1" m="1">
           <HStack alignItems={'center'} space="4">
             <Text style={{color: 'white', fontSize: 32}}>=</Text>
-            <Card minW={'1/6'} minH={20} bgColor={'cyan.700'}>
-              koob
+            <Card w={'20'} h={'32'} bgColor={'cyan.700'}>
+              <Box>koob title</Box>
             </Card>
             <Center>
-              <HStack>
+              <HStack flexGrow={1} space="6">
                 <Box>{item.label}</Box>
-                <Box>{pressed && '>'}</Box>
+                {pressed && <CheckIcon size="5" mt="0.5" color="emerald.200" />}
               </HStack>
             </Center>
           </HStack>
