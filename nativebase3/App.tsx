@@ -3,18 +3,22 @@ import {StatusBar} from 'expo-status-bar';
 import {
   Box,
   Button,
+  Card,
   Center,
   CheckIcon,
   ColorMode,
   extendTheme,
   HStack,
   NativeBaseProvider,
+  Switch,
+  Text,
   useColorMode,
+  useColorModeValue,
   VStack,
 } from 'native-base';
 import {CustomIcon} from './CustomIcon';
 import {ImageBackground, SafeAreaView, StyleSheet} from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {FC} from 'react';
 
 const colorModeManager = {
   get: async () => {
@@ -46,58 +50,81 @@ const config = {
 const theme = extendTheme({config});
 
 export default function App() {
-  const {colorMode, toggleColorMode} = useColorMode();
-
   return (
     <NativeBaseProvider colorModeManager={colorModeManager} theme={theme}>
-      <ImageBackground
-        source={{uri: 'https://wallpaperaccess.com/full/317501.jpg'}}
-        resizeMode="cover"
-        style={styles.image}
-        imageStyle={styles.imageStyle}>
-        <SafeAreaView>
-          <Box height="100%" width="100%">
-            <VStack>
-              <HStack justifyContent="flex-end">
-                <Button onPress={toggleColorMode}>
-                  Toggle color {colorMode}
-                </Button>
-              </HStack>
-              <List />
-            </VStack>
-          </Box>
-          <StatusBar style="auto" />
-        </SafeAreaView>
-      </ImageBackground>
+      <BgImage>
+        <Box safeArea height="100%" width="100%">
+          <VStack>
+            <TopBar />
+            <List />
+          </VStack>
+        </Box>
+      </BgImage>
     </NativeBaseProvider>
   );
 }
 
+const BgImage: FC = ({children}) => {
+  const {colorMode} = useColorMode();
+  return (
+    <ImageBackground
+      source={{uri: 'https://wallpaperaccess.com/full/317501.jpg'}}
+      resizeMode="cover"
+      style={StyleSheet.compose(
+        styles.image,
+        // @ts-ignore
+        colorMode === 'dark' ? darkStyles.image : lightStyles.image,
+      )}
+      imageStyle={{opacity: 0.4}}>
+      {children}
+    </ImageBackground>
+  );
+};
 const styles = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
   },
-  imageStyle: {
-    opacity: 0.5,
+});
+
+const darkStyles = StyleSheet.create({
+  image: {
+    backgroundColor: 'black',
   },
 });
 
+const lightStyles = StyleSheet.create({
+  image: {
+    backgroundColor: 'transparent',
+  },
+});
+
+const TopBar = () => {
+  const {colorMode, toggleColorMode} = useColorMode();
+
+  return (
+    <HStack alignItems="baseline" mx="4" my="2">
+      <Text alignSelf={'center'}>Some content here</Text>
+      <Switch ml="auto" onChange={toggleColorMode} mr="3.5" />
+    </HStack>
+  );
+};
+
 const List = () => (
   <Center>
-    <VStack space={'43'} pl="8">
-      <HStack space="2">
-        <CheckIcon size="5" mt="0.5" color="emerald.500" />
-        <Button
-          _pressed={{backgroundColor: 'red.200'}}
-          backgroundColor="transparent"
-          color="black"
-          m={0}
-          p={0}>
-          I'm a button!
-        </Button>
-      </HStack>
+    <VStack space="43">
+      <Button
+        _pressed={{backgroundColor: 'red.200'}}
+        backgroundColor="transparent"
+        color="black"
+        m={0}
+        p={0}>
+        <HStack space="2">
+          <CheckIcon size="5" mt="0.5" color="emerald.200" />
+          <Text>😀 I'm a button!</Text>
+        </HStack>
+      </Button>
       <HStack space="2">
         <CustomIcon />
         <Box>I'm a box!</Box>
