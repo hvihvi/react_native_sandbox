@@ -59,7 +59,7 @@ const Item = ({item, drag, isActive}: RenderItemParams<Item>) => {
       <Pressable
         onLongPress={drag}
         disabled={isActive}
-        delayLongPress={200}
+        delayLongPress={300}
         onPress={() => setPressed(!pressed)}>
         <Card bgColor={'blueGray.900'} flexGrow="1" m="1">
           <HStack alignItems={'center'} space="4">
