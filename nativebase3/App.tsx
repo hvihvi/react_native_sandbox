@@ -1,9 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {StatusBar} from 'expo-status-bar';
 import {
   Box,
   Button,
-  Card,
   Center,
   CheckIcon,
   ColorMode,
@@ -13,12 +11,11 @@ import {
   Switch,
   Text,
   useColorMode,
-  useColorModeValue,
   VStack,
 } from 'native-base';
-import {CustomIcon} from './CustomIcon';
-import {ImageBackground, SafeAreaView, StyleSheet} from 'react-native';
 import {FC} from 'react';
+import {ImageBackground, StyleSheet} from 'react-native';
+import {CustomIcon} from './CustomIcon';
 
 const colorModeManager = {
   get: async () => {
