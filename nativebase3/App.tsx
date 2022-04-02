@@ -75,7 +75,7 @@ const BgImage: FC = ({children}) => {
         // @ts-ignore
         colorMode === 'dark' ? darkStyles.image : lightStyles.image,
       )}
-      imageStyle={{opacity: 0.4}}>
+      imageStyle={{opacity: colorMode === 'dark' ? 0.4 : 0.6}}>
       {children}
     </ImageBackground>
   );

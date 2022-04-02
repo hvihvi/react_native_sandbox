@@ -1,4 +1,12 @@
-import {Box, Card, Center, CheckIcon, HStack} from 'native-base';
+import {
+  Box,
+  Card,
+  Center,
+  CheckIcon,
+  HStack,
+  useColorMode,
+  useColorModeValue,
+} from 'native-base';
 import React, {useState} from 'react';
 import {
   Text,
@@ -53,6 +61,7 @@ export default function DragList() {
 
 const Item = ({item, drag, isActive}: RenderItemParams<Item>) => {
   const [pressed, setPressed] = useState(false);
+  const isDark = useColorMode().colorMode === 'dark';
 
   return (
     <ScaleDecorator>
@@ -61,10 +70,20 @@ const Item = ({item, drag, isActive}: RenderItemParams<Item>) => {
         disabled={isActive}
         delayLongPress={300}
         onPress={() => setPressed(!pressed)}>
-        <Card bgColor={'blueGray.900'} flexGrow="1" m="1">
+        <Card
+          //bgColor={'blueGray.900'}
+          style={{
+            backgroundColor: isDark
+              ? `hsla(222, 47%, 11%, 0.9)`
+              : 'hsla(222, 47%, 11%, 0.1)',
+            borderColor: isDark ? undefined : 'hsla(222, 47%, 47%, 0.4)',
+            borderWidth: '1',
+          }}
+          flexGrow="1"
+          m="1">
           <HStack alignItems={'center'} space="4">
             <Text style={{color: 'white', fontSize: 32}}>=</Text>
-            <Card w={'20'} h={'32'} bgColor={'cyan.700'}>
+            <Card w={'20'} h={'32'} bgColor={isDark ? 'cyan.700' : 'cyan.200'}>
               <Box>koob title</Box>
             </Card>
             <Center flexGrow={1}>
