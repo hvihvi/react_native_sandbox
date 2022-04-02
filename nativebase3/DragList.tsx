@@ -67,9 +67,9 @@ const Item = ({item, drag, isActive}: RenderItemParams<Item>) => {
             <Card w={'20'} h={'32'} bgColor={'cyan.700'}>
               <Box>koob title</Box>
             </Card>
-            <Center>
-              <HStack flexGrow={1} space="6">
-                <Box>{item.label}</Box>
+            <Center flexGrow={1}>
+              <HStack space="6">
+                <Box flexGrow={1}>{item.label}</Box>
                 {pressed && <CheckIcon size="5" mt="0.5" color="emerald.200" />}
               </HStack>
             </Center>

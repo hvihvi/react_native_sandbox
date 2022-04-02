@@ -17,6 +17,7 @@ import {FC} from 'react';
 import {ImageBackground, StyleSheet} from 'react-native';
 import {CustomIcon} from './CustomIcon';
 import DragList from './DragList';
+import Player from './Player';
 
 const colorModeManager = {
   get: async () => {
@@ -130,5 +131,6 @@ const List = () => (
       </HStack>
       <Box>I'm a box!</Box>
     </VStack>
+    <Player />
   </Center>
 );
