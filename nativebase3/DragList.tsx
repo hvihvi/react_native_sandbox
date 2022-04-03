@@ -75,21 +75,29 @@ const Item = ({item, drag, isActive}: RenderItemParams<Item>) => {
           style={{
             backgroundColor: isDark
               ? `hsla(222, 47%, 11%, 0.9)`
-              : 'hsla(222, 47%, 11%, 0.1)',
-            borderColor: isDark ? undefined : 'hsla(222, 47%, 47%, 0.4)',
+              : 'hsla(222, 47%, 100%, 0.8)',
+            borderColor: isDark ? undefined : 'hsla(222, 47%, 47%, 0.9)',
             borderWidth: '1',
           }}
           flexGrow="1"
           m="1">
           <HStack alignItems={'center'} space="4">
-            <Text style={{color: 'white', fontSize: 32}}>=</Text>
+            <Text style={{color: isDark ? 'white' : 'black', fontSize: 32}}>
+              =
+            </Text>
             <Card w={'20'} h={'32'} bgColor={isDark ? 'cyan.700' : 'cyan.200'}>
               <Box>koob title</Box>
             </Card>
             <Center flexGrow={1}>
               <HStack space="6">
                 <Box flexGrow={1}>{item.label}</Box>
-                {pressed && <CheckIcon size="5" mt="0.5" color="emerald.200" />}
+                {pressed && (
+                  <CheckIcon
+                    size="5"
+                    mt="0.5"
+                    color={isDark ? 'emerald.600' : 'emerald.400'}
+                  />
+                )}
               </HStack>
             </Center>
           </HStack>

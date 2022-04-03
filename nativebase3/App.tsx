@@ -68,14 +68,16 @@ const BgImage: FC = ({children}) => {
   const {colorMode} = useColorMode();
   return (
     <ImageBackground
-      source={{uri: 'https://wallpaperaccess.com/full/317501.jpg'}}
+      source={{
+        uri: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3388&q=80',
+      }}
       resizeMode="cover"
       style={StyleSheet.compose(
         styles.image,
         // @ts-ignore
         colorMode === 'dark' ? darkStyles.image : lightStyles.image,
       )}
-      imageStyle={{opacity: colorMode === 'dark' ? 0.4 : 0.6}}>
+      imageStyle={{opacity: colorMode === 'dark' ? 0.4 : 0.9}}>
       {children}
     </ImageBackground>
   );
