@@ -78,6 +78,7 @@ const Item = ({item, drag, isActive}: RenderItemParams<Item>) => {
               : 'hsla(222, 47%, 100%, 0.8)',
             borderColor: isDark ? undefined : 'hsla(222, 47%, 47%, 0.9)',
             borderWidth: '1',
+            borderBottomWidth: '3',
           }}
           flexGrow="1"
           m="1">
