@@ -55,6 +55,12 @@ export default function App() {
         <Box safeArea height="100%" width="100%">
           <VStack space={8}>
             <TopBar />
+            <LinearGradient
+              // Button Linear Gradient
+              start={[0, 1]}
+              colors={['white', 'red', 'blue']}>
+              <Text>I'm text with LinearGradient</Text>
+            </LinearGradient>
             <FirstList />
             <DragList />
           </VStack>

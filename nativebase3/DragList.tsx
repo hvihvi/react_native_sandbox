@@ -20,7 +20,6 @@ import DraggableFlatList, {
   RenderItemParams,
   ScaleDecorator,
 } from 'react-native-draggable-flatlist';
-import {TouchableHighlight} from 'react-native-gesture-handler';
 
 const NUM_ITEMS = 10;
 function getColor(i: number) {
