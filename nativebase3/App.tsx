@@ -1,9 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {LinearGradient} from 'expo-linear-gradient';
 import {
   Box,
-  Button,
-  Center,
-  CheckIcon,
   ColorMode,
   extendTheme,
   HStack,
@@ -15,9 +13,8 @@ import {
 } from 'native-base';
 import {FC} from 'react';
 import {ImageBackground, StyleSheet} from 'react-native';
-import {CustomIcon} from './CustomIcon';
 import DragList from './DragList';
-import Player from './Player';
+import {FirstList} from './FirstList';
 
 const colorModeManager = {
   get: async () => {
@@ -43,6 +40,9 @@ const colorModeManager = {
 const config = {
   useSystemColorMode: true,
   initialColorMode: 'dark',
+  dependencies: {
+    'linear-gradient': LinearGradient,
+  },
 };
 
 // extend the theme
@@ -55,7 +55,7 @@ export default function App() {
         <Box safeArea height="100%" width="100%">
           <VStack space={8}>
             <TopBar />
-            <List />
+            <FirstList />
             <DragList />
           </VStack>
         </Box>
@@ -113,27 +113,3 @@ const TopBar = () => {
     </HStack>
   );
 };
-
-const List = () => (
-  <Center>
-    <VStack space="43">
-      <Button
-        _pressed={{backgroundColor: 'red.200'}}
-        backgroundColor="transparent"
-        color="black"
-        m={0}
-        p={0}>
-        <HStack space="2">
-          <CheckIcon size="5" mt="0.5" color="emerald.200" />
-          <Text>😀 I'm a button!</Text>
-        </HStack>
-      </Button>
-      <HStack space="2">
-        <CustomIcon />
-        <Box>I'm a box!!!</Box>
-      </HStack>
-      <Box>I'm a box!</Box>
-    </VStack>
-    <Player />
-  </Center>
-);
