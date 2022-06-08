@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "koobs",
+  "info": {
+    "singularName": "koob",
+    "pluralName": "koobs",
+    "displayName": "Koob",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "koobAudio": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "audios",
+        "videos",
+        "files"
+      ]
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Summary": {
+      "type": "richtext"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "koobs"
+    },
+    "authors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::author.author",
+      "inversedBy": "koobs"
+    }
+  }
+}
