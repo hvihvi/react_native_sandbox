@@ -60,7 +60,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    TrackPlayer.setupPlayer();
+    TrackPlayer.setupPlayer().then(TrackPlayer.removeUpcomingTracks);
   }, []);
 
   return (
